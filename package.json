@@ -1,7 +1,8 @@
 {
   "name": "playwright-cloud-functions-starter",
   "version": "0.0.1",
-  "description": "",
+  "description": "This starter kit makes you scraping websites by Playwright on Cloud Functions.",
+  "author": "Kazuki Yonemoto (https://dev.to/tim_yone)",
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
@@ -20,8 +21,7 @@
     "postInstall": "typesync"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/parser": "^6.4.1",
     "eslint": "^8.47.0",
