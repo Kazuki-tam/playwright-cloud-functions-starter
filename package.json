@@ -1,0 +1,39 @@
+{
+  "name": "playwright-cloud-functions-starter",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "watch": "tsc -w",
+    "pre-build": "tsc",
+    "dev": "npm-run-all -p watch function-start",
+    "function-start": "nodemon --exec 'functions-framework --target=scrapeFunction'",
+    "deploy": "npm-run-all pre-build",
+    "function-deploy": "gcloud functions deploy scrapeFunction --gen2 --runtime nodejs18 --trigger-http --allow-unauthenticated --memory=2GB --timeout=540s",
+    "projectList": "gcloud projects list",
+    "lint": "npm-run-all -p eslint checkTypes",
+    "lint:fix": "npm-run-all eslint:fix checkTypes",
+    "eslint": "eslint 'src/**/*.{js,ts}'",
+    "eslint:fix": "eslint --fix 'src/**/*.{js,ts}'",
+    "checkTypes": "tsc --noEmit --skipLibCheck",
+    "postInstall": "typesync"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6",
+    "typesync": "^0.11.1"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "playwright-aws-lambda": "^0.10.0",
+    "playwright-core": "^1.37.1"
+  }
+}
